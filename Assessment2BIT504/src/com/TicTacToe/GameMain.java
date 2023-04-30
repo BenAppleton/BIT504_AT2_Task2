@@ -106,6 +106,7 @@ public class GameMain extends JPanel implements MouseListener{
 		 });
 	}
 	/** Custom painting codes on this JPanel */
+	// Added capitals as the variables are case sensitive and sentence case was not recognised (PLAYING, DRAW, CROSS_WON, NOUGHT_WON)
 	public void paintComponent(Graphics g) {
 		//fill background and set colour to white
 		super.paintComponent(g);
@@ -114,7 +115,7 @@ public class GameMain extends JPanel implements MouseListener{
 		board.paint(g);
 		
 		//set status bar message
-		if (currentState == GameState.Playing) {          
+		if (currentState == GameState.PLAYING) {          
 			statusBar.setForeground(Color.BLACK);          
 			if (currentPlayer == Player.Cross) {   
 			
@@ -127,13 +128,13 @@ public class GameMain extends JPanel implements MouseListener{
 
 				
 			}       
-			} else if (currentState == GameState.Draw) {          
+			} else if (currentState == GameState.DRAW) {          
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("It's a Draw! Click to play again.");       
-			} else if (currentState == GameState.Cross_won) {          
+			} else if (currentState == GameState.CROSS_WON) {          
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("'X' Won! Click to play again.");       
-			} else if (currentState == GameState.Nought_won) {          
+			} else if (currentState == GameState.NOUGHT_WON) {          
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("'O' Won! Click to play again.");       
 			}
