@@ -16,7 +16,10 @@ public class Board {
 	/** Constructor to create the game board */
 	public Board() {
 		
-	 //TODO: initialise the cells array using ROWS and COLS constants 
+	 // Completed TODO: initialise the cells array using ROWS and COLS constants 
+		/* This tells the game board how many rows there are and how many column there are
+		 * We're calling the Rows and Cols from the GameMain class, because their values have been specified in that class
+		 */
 		cells = new Cell[GameMain.ROWS][GameMain.COLS];
 		
 		for (int row = 0; row < GameMain.ROWS; ++row) {
