@@ -73,10 +73,11 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		// Completed TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
 		// This creates a new game board, and it allows to apply the methods above to the board
-				board = new Board();
+		board = new Board();
 		
-		//TODO: call the method to initialise the game board
-
+		//Completed TODO: call the method to initialise the game board
+		// This initializes the game board. Which calls the Board class.
+		board.initialize();
 	}
 	
 	public static void main(String[] args) {
