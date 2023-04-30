@@ -4,13 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import com.TicTacToeGame.Board;
-import com.TicTacToeGame.GameMain;
-import com.TicTacToeGame.Player;
-import com.TicTacToeGame.GameMain.GameState;
-
-
-
 public class GameMain extends JPanel implements MouseListener{
 	//Constants for game 
 	// number of ROWS by COLS cell constants 
@@ -152,7 +145,8 @@ public class GameMain extends JPanel implements MouseListener{
 					board.cells[row][col].content = Player.Empty;           
 				}
 			}
-			 currentState = GameState.Playing;
+			// Updated 'Playing' to all caps
+			 currentState = GameState.PLAYING;
 			 currentPlayer = Player.Cross;
 		}
 		
@@ -199,8 +193,9 @@ public class GameMain extends JPanel implements MouseListener{
 		int mouseY = e.getY();             
 		// Get the row and column clicked             
 		int rowSelected = mouseY / CELL_SIZE;             
-		int colSelected = mouseX / CELL_SIZE;               			
-		if (currentState == GameState.Playing) {                
+		int colSelected = mouseX / CELL_SIZE;  
+		// Updated 'Playing' to all caps
+		if (currentState == GameState.PLAYING) {                
 			if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
 				// move  
 				board.cells[rowSelected][colSelected].content = currentPlayer; 
