@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.TicTacToeGame.Board;
 import com.TicTacToeGame.GameMain.GameState;
 
 
@@ -37,7 +38,7 @@ public class GameMain extends JPanel implements MouseListener{
         PLAYING, DRAW, CROSS_WON, NOUGHT_WON
     }
 	
-	/* I have add to private GameState currentState the to the following = GameState.PLAYING;
+	/* I have added to private GameState currentState the to the following = GameState.PLAYING;
 	 * I did this so whenever the program is run, the initial state of the game is always 'playing', so you can start playing immediately.
 	 */
 	private GameState currentState = GameState.PLAYING; 
@@ -70,8 +71,9 @@ public class GameMain extends JPanel implements MouseListener{
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT + 30));
 		
 		
-		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
-
+		// Completed TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
+		// This creates a new game board, and it allows to apply the methods above to the board
+				board = new Board();
 		
 		//TODO: call the method to initialise the game board
 
