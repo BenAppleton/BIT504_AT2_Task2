@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.TicTacToeGame.Board;
+import com.TicTacToeGame.GameMain;
 import com.TicTacToeGame.GameMain.GameState;
 
 
@@ -87,8 +88,11 @@ public class GameMain extends JPanel implements MouseListener{
 				//create a main window to contain the panel
 				JFrame frame = new JFrame(TITLE);
 				
-				//TODO: create the new GameMain panel and add it to the frame
-						
+				// Completed TODO: create the new GameMain panel and add it to the frame
+				// This creates the new instance of the GameMain panel
+				GameMain gameMain = new GameMain();
+				// This adds the game board panel to JFrame, without it the JFrame would not contain anything and appear blank.
+                frame.add(gameMain);		
 				
 				
 				//TODO: set the default close operation of the frame to exit_on_close
