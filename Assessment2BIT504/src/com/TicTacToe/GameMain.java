@@ -95,8 +95,9 @@ public class GameMain extends JPanel implements MouseListener{
                 frame.add(gameMain);		
 				
 				
-				//TODO: set the default close operation of the frame to exit_on_close
-		            
+				// Completed TODO: set the default close operation of the frame to exit_on_close
+                // This means that the program will exit when the user closes the JFrame (clicks the 'X' close icon of the JFrame)
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
