@@ -36,6 +36,7 @@ public class GameMain extends JPanel implements MouseListener{
 	private enum GameState {
         PLAYING, DRAW, CROSS_WON, NOUGHT_WON
     }
+	
 	/* I have add to private GameState currentState the to the following = GameState.PLAYING;
 	 * I did this so whenever the program is run, the initial state of the game is always 'playing', so you can start playing immediately.
 	 */
@@ -49,8 +50,11 @@ public class GameMain extends JPanel implements MouseListener{
 	/** Constructor to setup the UI and game components on the panel */
 	public GameMain() {   
 		
-		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
-	    
+		/* Completed TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
+		 * I added 'addMouseListener(this);'. This listens for mouse events such as clicks on the game board/window
+		 * We use the keyword 'this' because it refers to the 'GameMain' object that is being created when you run the program. 
+		 */
+		addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
 		statusBar = new JLabel("         ");       
