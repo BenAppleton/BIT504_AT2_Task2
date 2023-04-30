@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.TicTacToeGame.GameMain.GameState;
+
 
 
 public class GameMain extends JPanel implements MouseListener{
@@ -28,10 +30,16 @@ public class GameMain extends JPanel implements MouseListener{
 	// the game board 
 	private Board board;
 	 	 
-	//TODO: create the enumeration for the variable below (GameState currentState)
-	//HINT all of the states you require are shown in the code within GameMain
-	private GameState currentState; 
-	
+	/* Completed TODO: create the enumeration for the variable below (GameState currentState)
+	 * This enum is used to keep track of the state of the game (is it playing, has cross won, has nought won, or a draw?)
+	 */
+	private enum GameState {
+        PLAYING, DRAW, CROSS_WON, NOUGHT_WON
+    }
+	/* I have add to private GameState currentState the to the following = GameState.PLAYING;
+	 * I did this so whenever the program is run, the initial state of the game is always 'playing', so you can start playing immediately.
+	 */
+	private GameState currentState = GameState.PLAYING; 
 	// the current player
 	private Player currentPlayer; 
 	// for displaying game status message
