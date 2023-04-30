@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import com.TicTacToeGame.Board;
 import com.TicTacToeGame.GameMain;
+import com.TicTacToeGame.Player;
 import com.TicTacToeGame.GameMain.GameState;
 
 
@@ -119,13 +120,13 @@ public class GameMain extends JPanel implements MouseListener{
 			statusBar.setForeground(Color.BLACK);          
 			if (currentPlayer == Player.Cross) {   
 			
-				//Completed TODO: use the status bar to display the message "X"'s Turn
+				// Completed TODO: use the status bar to display the message "X"'s Turn
 				// Added this status message indicating X turn. This message will display at the bottom of the frame.
 				statusBar.setText("'X' Turn");
 				
 			} else {    
 				
-				//TODO: use the status bar to display the message "O"'s Turn
+				// Completed TODO: use the status bar to display the message "O"'s Turn
 				// Added this status message indicating O turn. This message will display at the bottom of the frame.
 				statusBar.setText("'O' Turn");
 				
@@ -165,14 +166,23 @@ public class GameMain extends JPanel implements MouseListener{
 			//check for win after play
 			if(board.hasWon(thePlayer, row, col)) {
 				
-				// TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
-
+				// Completed TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
+				// This 'if' statment checks if the winning player is cross
+			    if(thePlayer == Player.Cross) {
+			    	// This sets the current game state to 'CROSS_WON', which means the cross player own
+			        currentState = GameState.CROSS_WON;
+			    // This 'else' statement is used if the Nought player is the winner    
+			    } else {
+			        currentState = GameState.NOUGHT_WON;
+			    }
 				
-			} else 
-				if (board.isDraw ()) {
+			} else if (board.isDraw()) {
 					
-				// TODO: set the currentstate to the draw gamestate
-
+				// Completed TODO: set the currentstate to the draw gamestate
+					/* This 'else if' is used if the GameState is a draw, so neither player won.
+					 *  So the above if and else statements are used to check if their is a winner, and 'else if' if there is no winner
+					 */
+					currentState = GameState.DRAW;
 			}
 			//otherwise no change to current state of playing
 		}
