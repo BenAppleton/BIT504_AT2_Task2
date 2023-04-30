@@ -219,8 +219,9 @@ public class GameMain extends JPanel implements MouseListener{
 			initGame();            
 		}   
 		
-		//TODO: redraw the graphics on the UI          
-           
+		// Completed TODO: redraw the graphics on the UI 
+		// repaint() refreshes the display after a player has made a move. Updating the board to reflect the players moves
+		repaint();     
 	}
 		
 	
