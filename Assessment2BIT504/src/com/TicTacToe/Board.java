@@ -77,6 +77,7 @@ public class Board {
 		// Complete TODO: Check the diagonal in the other direction
 		// This checks for a diagonal line of 3 cells from top right to bottom left, while the above checks from top left to bottom right
 	    if (cells[0][2].content == thePlayer && cells[1][1].content == thePlayer && cells[2][0].content == thePlayer) {
+	    	// Returning true indicates that the player won the game this way
 	        return true;
 	    }		
 
