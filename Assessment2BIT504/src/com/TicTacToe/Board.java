@@ -3,6 +3,9 @@ package com.TicTacToe;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.TicTacToeGame.GameMain;
+import com.TicTacToeGame.Player;
+
 
 public class Board {
 	// grid line width
@@ -32,13 +35,21 @@ public class Board {
 	 /** Return true if it is a draw (i.e., no more EMPTY cells) */ 
 	public boolean isDraw() {
 		 
-		// TODO: Check whether the game has ended in a draw. 
-		// Hint: Use a nested loop (see the constructor for an example). Check whether any of the cells content in the board grid are Player.Empty. If they are, it is not a draw.
-		// Hint: Return false if it is not a draw, return true if there are no empty positions left
-		   
-		
-
-		
+		// Complete TODO: Check whether the game has ended in a draw. 
+	    // This checks whether any of the cells in the board grid are Player.Empty
+	    for (int row = 0; row < GameMain.ROWS; ++row) {
+	    	// This loops through each column in the row
+	        for (int col = 0; col < GameMain.COLS; ++col) {
+	        	// This checks if the content of the current cell being examined is an empty cell
+	            if (cells[row][col].content == Player.Empty) {
+	            	// if an EMPTY cell is found, return false (game is not a draw)
+	                return false; 
+	            }
+	        }
+	    }
+	    
+	    // This means all cells are non-empty, so it is a draw
+	    return true;
 	}
 	
 	/** Return true if the current player "thePlayer" has won after making their move  */
