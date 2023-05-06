@@ -21,6 +21,8 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING * 2;    
 	public static final int SYMBOL_STROKE_WIDTH = 8;
+	//Adding this will let the game modify the state of individual cells. Was add to fix a null state cell caused by the first click when playing
+	private Cell[][] cells = new Cell[ROWS][COLS];
 	
 	/*declare game object variables*/
 	// the game board 
