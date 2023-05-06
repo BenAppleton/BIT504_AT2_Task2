@@ -60,6 +60,14 @@ public class Board {
 	    // This means all cells are non-empty, so it is a draw
 	    return true;
 	}
+	public void printBoard() {
+	    for (int row = 0; row < GameMain.ROWS; ++row) {
+	        for (int col = 0; col < GameMain.COLS; ++col) {
+	            System.out.print(cells[row][col].content + " ");
+	        }
+	        System.out.println();
+	    }
+	}
 	
 	/** Return true if the current player "thePlayer" has won after making their move  */
 	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {

@@ -195,20 +195,22 @@ public class GameMain extends JPanel implements MouseListener{
 		int rowSelected = mouseY / CELL_SIZE;             
 		int colSelected = mouseX / CELL_SIZE;  
 		// Updated 'Playing' to all caps
-		if (currentState == GameState.PLAYING) {                
-			if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
-				// move  
-				board.cells[rowSelected][colSelected].content = currentPlayer; 
-				// update currentState                  
-				updateGame(currentPlayer, rowSelected, colSelected); 
-				// Switch player
-				if (currentPlayer == Player.Cross) {
-					currentPlayer =  Player.Nought;
-				}
-				else {
-					currentPlayer = Player.Cross;
-				}
-			}             
+		if (currentState == GameState.PLAYING) {
+		    if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
+		        // move
+		        board.cells[rowSelected][colSelected].content = currentPlayer;
+		        // print the state of the board
+		        System.out.println("After " + currentPlayer + "'s move:");
+		        board.printBoard();
+		        // update currentState
+		        updateGame(currentPlayer, rowSelected, colSelected);
+		        // Switch player
+		        if (currentPlayer == Player.Cross) {
+		            currentPlayer = Player.Nought;
+		        } else {
+		            currentPlayer = Player.Cross;
+		        }
+		    }            
 		} else {        
 			// game over and restart              
 			initGame();            
