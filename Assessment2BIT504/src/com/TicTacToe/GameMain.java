@@ -21,8 +21,6 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING * 2;    
 	public static final int SYMBOL_STROKE_WIDTH = 8;
-	//Adding this will let the game modify the state of individual cells. Was add to fix a null state cell caused by the first click when playing
-	private Cell[][] cells = new Cell[ROWS][COLS];
 	
 	/*declare game object variables*/
 	// the game board 
@@ -32,7 +30,7 @@ public class GameMain extends JPanel implements MouseListener{
 	 * This enum is used to keep track of the state of the game (is it playing, has cross won, has nought won, or a draw?)
 	 */
 	private enum GameState {
-        PLAYING, DRAW, CROSS_WON, NOUGHT_WON, INVALID_MOVE
+        PLAYING, DRAW, CROSS_WON, NOUGHT_WON
     }
 	
 	/* I have added to private GameState currentState the to the following = GameState.PLAYING;
@@ -73,8 +71,9 @@ public class GameMain extends JPanel implements MouseListener{
 		board = new Board();
 		
 		//Completed TODO: call the method to initialise the game board
-		// This initialises the game board. Which calls the Board class.
-		board.initialise();
+		// This initializes the game board, and ensures that cross goes first.
+		initGame();
+		repaint();
 	}
 	
 	public static void main(String[] args) {
@@ -141,15 +140,13 @@ public class GameMain extends JPanel implements MouseListener{
 	
 	  /** Initialise the game-board contents and the current status of GameState and Player) */
 		public void initGame() {
-			for (int row = 0; row < ROWS; ++row) {          
-				for (int col = 0; col < COLS; ++col) {  
-					// all cells empty
-					board.cells[row][col].content = Player.Empty;           
-				}
-			}
-			// Updated 'Playing' to all caps
-			 currentState = GameState.PLAYING;
-			 currentPlayer = Player.Cross;
+		    for (int row = 0; row < ROWS; ++row) {          
+		        for (int col = 0; col < COLS; ++col) {  
+		            board.cells[row][col].content = Player.Empty;           
+		        }
+		    }
+		    currentPlayer = Player.Cross;
+		    currentState = GameState.PLAYING;
 		}
 		
 		
@@ -159,25 +156,27 @@ public class GameMain extends JPanel implements MouseListener{
 		 *   
 		 */
 		public void updateGame(Player thePlayer, int row, int col) {
-		    if (cells[row][col].content != Player.Empty) {
-		        currentState = GameState.INVALID_MOVE;
-		        return;
-		    }
-
-		    cells[row][col].content = thePlayer;
-		    
-		    //check for win after play
-		    if(board.hasWon(thePlayer, row, col)) {
-		        
-		        if(thePlayer == Player.Cross) {
-		            currentState = GameState.CROSS_WON;
-		        } else {
-		            currentState = GameState.NOUGHT_WON;
-		        }
-		        
-		    } else if (board.isDraw()) {
-		        currentState = GameState.DRAW;
-		    }
+			//check for win after play
+			if(board.hasWon(thePlayer, row, col)) {
+				
+				// Completed TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
+				// This 'if' statment checks if the winning player is cross
+			    if(thePlayer == Player.Cross) {
+			    	// This sets the current game state to 'CROSS_WON', which means the cross player own
+			        currentState = GameState.CROSS_WON;
+			    // This 'else' statement is used if the Nought player is the winner    
+			    } else {
+			        currentState = GameState.NOUGHT_WON;
+			    }
+				
+			} else if (board.isDraw()) {
+					
+				// Completed TODO: set the currentstate to the draw gamestate
+					/* This 'else if' is used if the GameState is a draw, so neither player won.
+					 *  So the above if and else statements are used to check if their is a winner, and 'else if' if there is no winner
+					 */
+					currentState = GameState.DRAW;
+			}
 			//otherwise no change to current state of playing
 		}
 		
@@ -195,22 +194,20 @@ public class GameMain extends JPanel implements MouseListener{
 		int rowSelected = mouseY / CELL_SIZE;             
 		int colSelected = mouseX / CELL_SIZE;  
 		// Updated 'Playing' to all caps
-		if (currentState == GameState.PLAYING) {
-		    if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
-		        // move
-		        board.cells[rowSelected][colSelected].content = currentPlayer;
-		        // print the state of the board
-		        System.out.println("After " + currentPlayer + "'s move:");
-		        board.printBoard();
-		        // update currentState
-		        updateGame(currentPlayer, rowSelected, colSelected);
-		        // Switch player
-		        if (currentPlayer == Player.Cross) {
-		            currentPlayer = Player.Nought;
-		        } else {
-		            currentPlayer = Player.Cross;
-		        }
-		    }            
+		if (currentState == GameState.PLAYING) {                
+			if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
+				// move  
+				board.cells[rowSelected][colSelected].content = currentPlayer; 
+				// update currentState                  
+				updateGame(currentPlayer, rowSelected, colSelected); 
+				// Switch player
+				if (currentPlayer == Player.Cross) {
+					currentPlayer =  Player.Nought;
+				}
+				else {
+					currentPlayer = Player.Cross;
+				}
+			}             
 		} else {        
 			// game over and restart              
 			initGame();            
