@@ -32,7 +32,7 @@ public class Board {
 	/* This is add for the TODO in the GameMain class on line 73, which calls this method to initialise the game board
 	 *  It's purpose is to set the board as empty, so it is used for starting the game and resetting game 
 	 */
-    public void initialize() {
+    public void initialise() {
         // Set all the cells in the board to be empty
         for (int row = 0; row < GameMain.ROWS; ++row) {
             for (int col = 0; col < GameMain.COLS; ++col) {

@@ -14,8 +14,13 @@ public class Cell {
 	/** Constructor to initialise this cell with the specified row and col */
 	public Cell(int row, int col) {
 		
-		// TODO: Initialise the variables row, col 
-
+		/* Completed TODO: Initialise the variables row, col
+		 * This specifies what cell was selected by the users input (mouse click)
+		 * because the int row and col are used outside of this method we the keyword 'this'
+		 * to help distinguish a specific row and col (To identify the individual cell) instead of all row's and columns. 
+		 */
+	    this.row = row;
+	    this.col = col;
 		
 		
 		//TODO: call the method that sets the cell content to EMPTY
