@@ -23,8 +23,10 @@ public class Cell {
 	    this.col = col;
 		
 		
-		//TODO: call the method that sets the cell content to EMPTY
-		 
+		/*Completed TODO: call the method that sets the cell content to EMPTY
+		 * The clear method is the last method in this class located on line 55
+		 */
+		clear(); 
 	}
 	
 
