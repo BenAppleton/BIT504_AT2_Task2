@@ -30,7 +30,7 @@ public class GameMain extends JPanel implements MouseListener{
 	 * This enum is used to keep track of the state of the game (is it playing, has cross won, has nought won, or a draw?)
 	 */
 	private enum GameState {
-        PLAYING, DRAW, CROSS_WON, NOUGHT_WON
+        PLAYING, DRAW, CROSS_WON, NOUGHT_WON, INVALID_MOVE
     }
 	
 	/* I have added to private GameState currentState the to the following = GameState.PLAYING;
@@ -157,27 +157,25 @@ public class GameMain extends JPanel implements MouseListener{
 		 *   
 		 */
 		public void updateGame(Player thePlayer, int row, int col) {
-			//check for win after play
-			if(board.hasWon(thePlayer, row, col)) {
-				
-				// Completed TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
-				// This 'if' statment checks if the winning player is cross
-			    if(thePlayer == Player.Cross) {
-			    	// This sets the current game state to 'CROSS_WON', which means the cross player own
-			        currentState = GameState.CROSS_WON;
-			    // This 'else' statement is used if the Nought player is the winner    
-			    } else {
-			        currentState = GameState.NOUGHT_WON;
-			    }
-				
-			} else if (board.isDraw()) {
-					
-				// Completed TODO: set the currentstate to the draw gamestate
-					/* This 'else if' is used if the GameState is a draw, so neither player won.
-					 *  So the above if and else statements are used to check if their is a winner, and 'else if' if there is no winner
-					 */
-					currentState = GameState.DRAW;
-			}
+		    if (cells[row][col].content != Player.Empty) {
+		        currentState = GameState.INVALID_MOVE;
+		        return;
+		    }
+
+		    cells[row][col].content = thePlayer;
+		    
+		    //check for win after play
+		    if(board.hasWon(thePlayer, row, col)) {
+		        
+		        if(thePlayer == Player.Cross) {
+		            currentState = GameState.CROSS_WON;
+		        } else {
+		            currentState = GameState.NOUGHT_WON;
+		        }
+		        
+		    } else if (board.isDraw()) {
+		        currentState = GameState.DRAW;
+		    }
 			//otherwise no change to current state of playing
 		}
 		
