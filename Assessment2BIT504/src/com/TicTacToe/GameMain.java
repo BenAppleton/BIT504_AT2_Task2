@@ -71,8 +71,8 @@ public class GameMain extends JPanel implements MouseListener{
 		board = new Board();
 		
 		//Completed TODO: call the method to initialise the game board
-		// This initializes the game board. Which calls the Board class.
-		board.initialize();
+		// This initialises the game board. Which calls the Board class.
+		board.initialise();
 	}
 	
 	public static void main(String[] args) {
