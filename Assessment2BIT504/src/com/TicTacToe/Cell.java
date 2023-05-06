@@ -54,8 +54,12 @@ public class Cell {
 	/** Set this cell's content to EMPTY */
 	public void clear() {
 		
-		// TODO: Set the value of content to Empty (Remember this is an enum)
-
+		/* Completed TODO: Set the value of content to Empty (Remember this is an enum)
+		 * We're using 'this.content =' over 'content =' despite having the same result because it is more specific
+		 * The keyword 'content' because the Player enum has 3 values that could display in a cell 'Empty, Nought, Cross
+		 * So we want to specify 'empty' with Player.empty when we want a empty cell
+		 */
+		this.content = Player.Empty;
 		
 	}
 		
