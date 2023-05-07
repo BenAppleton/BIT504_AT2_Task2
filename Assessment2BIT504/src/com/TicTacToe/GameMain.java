@@ -71,9 +71,8 @@ public class GameMain extends JPanel implements MouseListener{
 		board = new Board();
 		
 		//Completed TODO: call the method to initialise the game board
-		// This initializes the game board, and ensures that cross goes first.
-		initGame();
-		repaint();
+		// This initialises the game board. Which calls the Board class.
+		board.initialise();
 	}
 	
 	public static void main(String[] args) {
@@ -140,13 +139,15 @@ public class GameMain extends JPanel implements MouseListener{
 	
 	  /** Initialise the game-board contents and the current status of GameState and Player) */
 		public void initGame() {
-		    for (int row = 0; row < ROWS; ++row) {          
-		        for (int col = 0; col < COLS; ++col) {  
-		            board.cells[row][col].content = Player.Empty;           
-		        }
-		    }
-		    currentPlayer = Player.Cross;
-		    currentState = GameState.PLAYING;
+			for (int row = 0; row < ROWS; ++row) {          
+				for (int col = 0; col < COLS; ++col) {  
+					// all cells empty
+					board.cells[row][col].content = Player.Empty;           
+				}
+			}
+			// Updated 'Playing' to all caps
+			 currentState = GameState.PLAYING;
+			 currentPlayer = Player.Cross;
 		}
 		
 		
