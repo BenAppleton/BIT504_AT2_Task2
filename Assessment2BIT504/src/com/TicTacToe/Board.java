@@ -22,8 +22,11 @@ public class Board {
 		 */
 		cells = new Cell[GameMain.ROWS][GameMain.COLS];
 		
+		// This starts a for loop to iterate (go through) the rows of the cells array.
 		for (int row = 0; row < GameMain.ROWS; ++row) {
+			// This is a nested loop and it iterates through the columns of the cells array.
 			for (int col = 0; col < GameMain.COLS; ++col) {
+				// This initializes each element of the cells array with a new Cell object
 				cells[row][col] = new Cell(row, col);
 			}
 		}
@@ -52,7 +55,7 @@ public class Board {
 	
 	/** Return true if the current player "thePlayer" has won after making their move  */
 	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
-		 // check if player has 3-in-that-row
+		 // This checks if player has 3-in-that-row
 		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
 			return true; 
 		
@@ -69,6 +72,7 @@ public class Board {
 		
 		 // 3-in-the-diagonal
 		if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer)
+			// Returning true indicates that the player won the game this way
 			return true;
 		 
 		
