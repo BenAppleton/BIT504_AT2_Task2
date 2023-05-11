@@ -1,6 +1,8 @@
 package com.TicTacToe;
 
+// We use this to colour the grid lines in the paint() method
 import java.awt.Color;
+// We use this to draw the board and its content, it's called in the paint() method
 import java.awt.Graphics;
 
 
@@ -57,6 +59,7 @@ public class Board {
 	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
 		 // This checks if player has 3-in-that-row
 		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
+			// Returning true indicates that the player won the game this way
 			return true; 
 		
 		 // Complete TODO: Check if the player has 3 in the playerCol.
@@ -93,22 +96,31 @@ public class Board {
 	 * Cells to paint themselves into the grid
 	 */
 	public void paint(Graphics g) {
-		//draw the grid
+		/* The first two for loops are used to draw the grid line on the board (Vertical and Horizontal)
+		 * The third for loop is used to draw the cells
+		 */
+		// This is used to colour the gird lines grey
 		g.setColor(Color.gray);
-		for (int row = 1; row < GameMain.ROWS; ++row) {          
+		// This for loop is used to iterate over each row of the game board
+		for (int row = 1; row < GameMain.ROWS; ++row) {   
+			// This draws rectangles vertically (in rows)
 			g.fillRoundRect(0, GameMain.CELL_SIZE * row - GRID_WIDHT_HALF,                
 					GameMain.CANVAS_WIDTH - 1, GRID_WIDTH,                
 					GRID_WIDTH, GRID_WIDTH);       
 			}
-		for (int col = 1; col < GameMain.COLS; ++col) {          
+		// This for loop is used to iterate over each column of the game board
+		for (int col = 1; col < GameMain.COLS; ++col) {   
+			// This draws rectangles horizontally (in columns)
 			g.fillRoundRect(GameMain.CELL_SIZE * col - GRID_WIDHT_HALF, 0,                
 					GRID_WIDTH, GameMain.CANVAS_HEIGHT - 1,                
 					GRID_WIDTH, GRID_WIDTH);
 		}
 		
-		//Draw the cells
+		// This for loop is used to draw the cells. The for loop iterates through the rows
 		for (int row = 0; row < GameMain.ROWS; ++row) {          
+			// This for loop iterates through the columns
 			for (int col = 0; col < GameMain.COLS; ++col) {  
+				// This paints the content of the cell (empty, nought or cross)
 				cells[row][col].paint(g);
 			}
 		}
