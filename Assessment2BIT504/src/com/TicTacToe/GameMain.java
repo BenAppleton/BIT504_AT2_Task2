@@ -6,15 +6,16 @@ import javax.swing.*;
 
 public class GameMain extends JPanel implements MouseListener{
 	//Constants for game 
-	// number of ROWS by COLS cell constants 
+	// This sets number of ROWS by COLS cell constants both to 3
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
+	// This sets the title of the game to 'Tic Tac Toe'
 	public static final String TITLE = "Tic Tac Toe";
 
 	//constants for dimensions used for drawing
 	//cell width and height
 	public static final int CELL_SIZE = 100;
-	//drawing canvas
+	//drawing canvas (Setting the width and height of the game board)
 	public static final int CANVAS_WIDTH = CELL_SIZE * COLS;
 	public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
 	//Noughts and Crosses are displayed inside a cell, with padding from border
@@ -53,10 +54,14 @@ public class GameMain extends JPanel implements MouseListener{
 		addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
-		statusBar = new JLabel("         ");       
-		statusBar.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));       
-		statusBar.setBorder(BorderFactory.createEmptyBorder(2, 5, 4, 5));       
-		statusBar.setOpaque(true);       
+		statusBar = new JLabel("         ");  
+		// This sets the font of the JLabel input to bold and font size 14
+		statusBar.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 14));     
+		// This sets an empty boarder around the status bar which will add some padding and space between the text and boarder
+		statusBar.setBorder(BorderFactory.createEmptyBorder(2, 5, 4, 5));   
+		// This sets the opacity so the back ground colour (light grey) is visible
+		statusBar.setOpaque(true);     
+		// This sets the background colour of the JLabel to light grey
 		statusBar.setBackground(Color.LIGHT_GRAY);  
 		
 		//layout of the panel is in border layout
