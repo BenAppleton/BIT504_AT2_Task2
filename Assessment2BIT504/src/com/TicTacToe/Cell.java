@@ -73,6 +73,5 @@ public class Cell {
 		 */
 		this.content = Player.Empty;
 		
-	}
-		
+	}		
 }
